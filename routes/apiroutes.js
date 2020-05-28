@@ -13,7 +13,15 @@ router.post("/api/book",function(req,res){
         console.log("records", records)
         res.json(records)
     })
-
+.catch(function(error){
+    console.log(error.code)
+    if(error.code == 11000){
+        res.json({status:"Book already saved."})
+    }
+    else{
+    res.json(error)
+    }
+})
 });
 
 router.put("/api/book/:id",function(req,res){

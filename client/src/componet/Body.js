@@ -39,6 +39,19 @@ class Body extends React.Component {
             }
         )
     }
+booksSaved=(id)=>{
+var books=this.state.booklist
+for(let i = 0; i < books.length; i ++){
+    if(books[i].id==id){
+        books[i].saved= true
+    }
+}
+this.setState({
+    booklist:books
+})
+
+}
+
     render() {
         var booklist = this.state.booklist
         return (<div>
@@ -50,9 +63,16 @@ class Body extends React.Component {
                     <button onClick={this.press}>Search</button>
                 </div>
             </div>
-            {/* {booklist.map((book, index)=>(
-                <Bookitem book={book} key={index}/>
-            ))} */}
+            {booklist.map((book, index)=> 
+                <Bookitem
+                id={book.id}
+                title={book.title}
+                author={book.author}
+                synopsis={book.synopsis}
+                saved={book.saved}
+                booksSaved={this.booksSaved} 
+                key={index}/>
+            )}
         </div>)
     }
 }
