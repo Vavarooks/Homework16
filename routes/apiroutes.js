@@ -32,6 +32,14 @@ router.put("/api/book/:id",function(req,res){
 
 })
 
+router.delete("/api/book/:id", function(req,res){
+    console.log("Delete Route",req.params.id)
+    db.findOneAndRemove({id:req.params.id}).then(function(records){
+        console.log(" Delet Records", records)
+        res.json(records)
+})
+})
+
 
 
 

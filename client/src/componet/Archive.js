@@ -8,10 +8,11 @@ state={
 }
 
 handleDelete =()=>{
+    console.log("Delete , ",this.props.id)
     Axios.delete("/api/book/" + this.props.id)
     .then(response =>{
         console.log(response)
-        this.props.booksSaved(this.props.id)
+        this.props.booksDeleted(this.props.id)
         if(response.data.status == "Book already deleted."){
             this.setState({status:"Book already deleted."})
         }
