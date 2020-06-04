@@ -7,10 +7,10 @@ function Footer() {
                 <a className="nav-link active" href="#">&copy; Vanessa Emerick, 2020</a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <a className="nav-link" href="#">Email</a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <a className="nav-link" href="#">Linked In</a>
             </li>
         </ul>
     )

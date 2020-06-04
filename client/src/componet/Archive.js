@@ -2,28 +2,22 @@ import React from "react"
 import Axios from "axios";
 
 
-class Bookitem extends React.Component {
+class Archive extends React.Component {
 state={
     status:""
 }
-saveBook=() =>{
-    let newBook = {
-        id: this.props.id,
-        title: this.props.title,
-        author: this.props.author,
-        synopsis: this.props.synopsis,
 
-    }
-    Axios.post("/api/book", newBook)
+handleDelete =()=>{
+    Axios.delete("/api/book/" + this.props.id)
     .then(response =>{
         console.log(response)
         this.props.booksSaved(this.props.id)
-        if(response.data.status == "Book already saved."){
-            this.setState({status:"Book already saved."})
+        if(response.data.status == "Book already deleted."){
+            this.setState({status:"Book already deleted."})
         }
     })
 .catch(error=>{
-    console.log(error, "Bookitem")
+    console.log(error, "Archive")
 })
 }
 
@@ -36,14 +30,17 @@ saveBook=() =>{
                     <p className="card-text">{this.props.synopsis}</p>
                     <a href="#" className="card-link">Card link</a>
                     <a href="#" className="card-link">Another link</a>
-                    <p className="saves">{this.state.status}</p>
-                    {this.props.saved ?
-                    <p>Book saved</p>: 
-                    <button onClick={this.saveBook}>Save</button>}
+                    <p className="delets">{this.state.status}</p>
+                    {this.props.deleted ?
+                    <p>Book deleted</p>: 
+                    <button onClick={this.handleDelete}>delete</button>}
                 </div>
             </div>
         </div>)
     }
 }
 
-export default Bookitem;
+export default Archive;
+
+
+
