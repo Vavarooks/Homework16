@@ -11,7 +11,7 @@ function Footer() {
                 <a className="nav-link" href="#">Email</a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Linked In</a>
+                <a className="nav-link" href="https://github.com/Vavarooks/Homework16">Github</a>
             </li>
         </ul>
         </div>
